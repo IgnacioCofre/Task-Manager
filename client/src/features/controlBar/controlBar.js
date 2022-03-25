@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { setTasks, loadingTasks } from "../taskList/stateSlice";
 import { useSelector, useDispatch } from 'react-redux';
-import { orderByCreationDate } from '../../functions/orderTasks';
+import { orderTasksBy } from '../../functions/orderTasks';
+
+import axios from "axios";
+const urlBase = 'http://localhost:3000';
 
 export default function ControlBar () {
     
@@ -11,13 +14,12 @@ export default function ControlBar () {
 
     const [ orderTasks, setOrderTasks ] = useState("creationDate");
 
-    const orderTaskBy = async( orderBy ) => {
+    const updateOrderTaskBy = async( orderBy ) => {
         dispatch(loadingTasks);
-        var newOrderTasks = await tasksValue.map(task => task);
-        newOrderTasks = await newOrderTasks.sort(orderByCreationDate(orderBy));
+        var newOrderTasks = Array.from(tasksValue);
+        newOrderTasks = newOrderTasks.sort(orderTasksBy(orderBy));
         dispatch(setTasks(newOrderTasks));
-        console.log(newOrderTasks)
-        console.log("end")
+        //console.log(newOrderTasks)
     }
 
     const handleChange = (event) => {
@@ -27,18 +29,37 @@ export default function ControlBar () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        updateOrderTaskBy(orderTasks);
+    }
 
-        if ( orderTasks === "creationDate" || orderTasks === "expirationDate" ) {
-            orderTaskBy(orderTasks);
-        } else if (orderTasks === "currentState") {
-            console.log("order by current state");
-        } else {
-            orderTaskBy("creationDate")
-        }
+    const updateIsDeleted = async () => {
+        //console.log("press botton")
+        //console.log(tasksValue);
+        dispatch(loadingTasks);
+        let jobs =  [Promise];
+        tasksValue.forEach(task => {
+            const { id, isDeleted } = task;
+            if (isDeleted) {
+                //console.log(`task: ${id} ${isDeleted}`);
+                const deleteTask = axios.delete(`${urlBase}/tasks/${id}`);
+                jobs.push(deleteTask);
+            }
+        });
+        
+        await Promise.all(jobs);
+
+        axios.get(`${urlBase}/tasks`)
+            .then(res => {
+                //console.log("end for");
+                //console.log(res.data);
+                dispatch(setTasks(res.data))
+            })
+            .catch(error => console.log(error))
     }
 
     return (
         <div>
+            <button onClick={updateIsDeleted}>Liberar tareas seleccionadas</button>
             <Link to='createTask/' className='btn btn-primary'>+ Crear nueva tarea</Link>
             <form onSubmit={handleSubmit}>
                 <label>Ordenar tareas por:

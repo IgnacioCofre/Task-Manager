@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import getDateFormat from "../../functions/dateFormat";
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateIsDeletedTask } from '../taskList/stateSlice'
 
 export default function Task (props) {
-    const { id, completed, title, expirationDate, creationDate } = props.task;
-    const [ checkState, setCheckState ] = useState(false);
-    
-    function changeCheckState () {
-        console.log("check function");
-        setCheckState(checkState => !checkState);
+    const { id, completed, title, expirationDate, creationDate} = props.task;
+    const indexState  = props.pos;
+    const checkState = useSelector(state => state.Tasks.value[indexState].isDeleted);
+    //console.log(`${id} ${checkState}`);
+    const dispatch = useDispatch();
+
+    function changeCheckState (event) {
+        //console.log("check function");
+        dispatch(updateIsDeletedTask(indexState));
     }
 
     return (
         <div>
             <label>
-                <input type="checkbox" checked={checkState} onChange={changeCheckState}/>
+                <input type="checkbox" name="checkbox" checked={checkState} onChange={changeCheckState}/>
             </label>
             <p>{title}</p>
             <p>Fecha de creación: {getDateFormat(new Date(creationDate))}</p>

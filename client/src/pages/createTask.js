@@ -14,7 +14,7 @@ export default function CreateTask () {
         creationDate: new Date(),
         expirationDate: new Date(),
         completed: false,
-        idDeleted: false,
+        isDeleted: false,
     })
 
     const changeHandler = (event) => {
@@ -26,7 +26,7 @@ export default function CreateTask () {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(newTask);
+        //console.log(newTask);
         //funcion que maneje errores
         axios.post(`${urlBase}/tasks`,newTask)
     }

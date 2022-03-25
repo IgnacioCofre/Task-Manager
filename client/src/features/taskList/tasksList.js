@@ -23,7 +23,7 @@ export default function TasksList () {
     }, [dispatch]);
     
     const taksArray = tasksValue.map((task, idx) => (
-        task.idDeleted ? null : <Task key={idx} task= {task} />
+        <Task key = {idx} task = {task} pos = {idx} />
     )
     
 );
@@ -31,7 +31,8 @@ export default function TasksList () {
     return (
         <div>
             <ControlBar/>
-            {loading ? <h1>Loading Tasks...</h1> : taksArray}
+            {loading ? <h1>Loading Tasks...</h1> :
+             taksArray === {} ? <h1>No hay tareas por mostrar :D</h1> : taksArray}
         </div>
     )
 }

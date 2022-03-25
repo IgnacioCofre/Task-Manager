@@ -5,63 +5,23 @@
       "creationDate": "2022-03-24T02:18:52.682Z",
       "expirationDate": "2022-01-20T02:19:03.000Z",
       "completed": true,
-      "idDeleted": false,
+      "isDeleted": false,
       "id": 1
     },
     {
-      "title": "tarea 2",
-      "creationDate": "2022-03-24T02:18:52.682Z",
-      "expirationDate": "2022-03-17T02:18:52.000Z",
-      "completed": true,
-      "idDeleted": false,
-      "id": 2
-    },
-    {
-      "title": "tarea 3",
-      "creationDate": "2022-03-01T23:28:56.782Z",
-      "expirationDate": "2022-01-28T23:28:56.000Z",
-      "completed": false,
-      "idDeleted": false,
-      "id": 3
-    },
-    {
-      "title": "tarea 4",
-      "creationDate": "2022-03-01T23:28:56.782Z",
-      "expirationDate": "2022-03-30T23:28:56.782Z",
-      "completed": false,
-      "idDeleted": true,
-      "id": 4
-    },
-    {
-      "title": "tarea 5",
-      "creationDate": "2022-03-01T23:28:56.782Z",
-      "expirationDate": "2022-03-24T02:15:59.401Z",
-      "completed": false,
-      "idDeleted": false,
-      "id": 5
-    },
-    {
-      "title": "tarea nueva",
-      "creationDate": "2022-03-23T17:49:25.000Z",
-      "expirationDate": "2022-03-26T17:49:25.000Z",
-      "completed": true,
-      "idDeleted": false,
-      "id": 6
-    },
-    {
-      "title": "primera Tarea",
+      "title": "tarea 7",
       "creationDate": "2021-06-08T20:20:40.000Z",
       "expirationDate": "2022-03-24T19:20:40.820Z",
       "completed": false,
-      "idDeleted": false,
+      "isDeleted": false,
       "id": 7
     },
     {
-      "title": "asdasdasd",
+      "title": "tarea 8",
       "creationDate": "2022-03-25T01:00:24.940Z",
       "expirationDate": "2022-03-05T01:00:24.000Z",
       "completed": false,
-      "idDeleted": false,
+      "isDeleted": false,
       "id": 8
     }
   ]

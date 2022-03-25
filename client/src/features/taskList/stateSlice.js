@@ -20,10 +20,13 @@ export const tasksSlice = createSlice({
         ...state,
         loading: true
       }
+    },
+    updateIsDeletedTask: (state, action) => {
+      state.value[action.payload].isDeleted = !state.value[action.payload].isDeleted;
     }
   },
 })
 
-export const { setTasks, loadingTasks } = tasksSlice.actions
+export const { setTasks, loadingTasks, updateIsDeletedTask } = tasksSlice.actions
 
 export default tasksSlice.reducer
