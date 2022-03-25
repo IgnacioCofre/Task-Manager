@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   value : [],
   loading: true,
-  order: "dateCreation"
 }
 
 export const tasksSlice = createSlice({
@@ -21,15 +20,10 @@ export const tasksSlice = createSlice({
         ...state,
         loading: true
       }
-    },
-    orderTasks : (state, action) => {
-      return {
-        order: action.payload,
-      }
     }
   },
 })
 
-export const { setTasks, loadingTasks, orderTasks } = tasksSlice.actions
+export const { setTasks, loadingTasks } = tasksSlice.actions
 
 export default tasksSlice.reducer

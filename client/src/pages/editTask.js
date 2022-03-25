@@ -28,11 +28,9 @@ export default function EditTask () {
                             completed: res.data.completed,
                         })
                     }
-                    
                 })
                 .catch(error => console.log(error));
         }
-
         getTask();
     }, [id]);
 

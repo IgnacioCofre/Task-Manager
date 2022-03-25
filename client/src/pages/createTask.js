@@ -42,7 +42,6 @@ export default function CreateTask () {
                         type='text'
                         id='title'
                         name='title'
-                        defaultValue={"Descripción de la tarea"}
                         value={newTask.title}
                         onChange={changeHandler}
                     >
