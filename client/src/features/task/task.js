@@ -5,8 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateIsDeletedTask } from '../taskList/stateSlice'
 
 export default function Task (props) {
+    
     const { id, completed, title, expirationDate, creationDate} = props.task;
     const indexState  = props.pos;
+    
+    const today = new Date();
+    const overdueTask = (new Date(expirationDate) < today) ? true : false; 
+    
     const checkState = useSelector(state => state.Tasks.value[indexState].isDeleted);
     //console.log(`${id} ${checkState}`);
     const dispatch = useDispatch();
@@ -25,7 +30,8 @@ export default function Task (props) {
             <p>Fecha de creación: {getDateFormat(new Date(creationDate))}</p>
             <p>Fecha de vencimiento: {getDateFormat(new Date(expirationDate))}</p>
             {
-                completed ? <p>Completed</p> : <p>Not Completed</p>
+                completed ? <p>Completada</p> : 
+                overdueTask ? <p>Atrasada</p> : <p>Por completar</p>
             }
             <Link to={`/editTask/${id}`} className='btn btn-primary'>
                 Editar Tarea

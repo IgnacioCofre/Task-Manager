@@ -9,6 +9,7 @@ const urlBase = 'http://localhost:3000';
 
 export default function CreateTask () {
     
+    const [ taskSaveSuccess, setTaskSaveSuccess ] = useState(false);
     const [ newTask, setNewTask ] = useState({
         title: "",
         creationDate: new Date(),
@@ -26,15 +27,16 @@ export default function CreateTask () {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        //console.log(newTask);
-        //funcion que maneje errores
         axios.post(`${urlBase}/tasks`,newTask)
+            .then(setTaskSaveSuccess(true))
+            .catch(error => console.log(error));
     }
 
     // agregar mensaje de guardado
     return (
         <div>
             <h1>Crear nueava tarea</h1>
+            {taskSaveSuccess ? <h1>Tarea creada</h1> : null}
             <form className='search-form' onSubmit={submitHandler}>
                 <div className='form-control'>
                     <label htmlFor='name'>Descripción:</label>

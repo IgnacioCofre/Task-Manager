@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { setTasks, loadingTasks } from "../taskList/stateSlice";
 import { useSelector, useDispatch } from 'react-redux';
+import { orderTasksBy } from "../../functions/orderTasks";
 
 import Task from "../task/task";
 import ControlBar from "../controlBar/controlBar";
@@ -18,7 +19,7 @@ export default function TasksList () {
         console.log("get data from server")
         dispatch(loadingTasks);
         axios.get(`${urlBase}/tasks`)
-            .then(res => dispatch(setTasks(res.data)))
+            .then(res => dispatch(setTasks(res.data.sort(orderTasksBy("creationDate")))))
             .catch(error => console.log(error));
     }, [dispatch]);
     
@@ -31,8 +32,8 @@ export default function TasksList () {
     return (
         <div>
             <ControlBar/>
-            {loading ? <h1>Loading Tasks...</h1> :
-             taksArray === {} ? <h1>No hay tareas por mostrar :D</h1> : taksArray}
+            {loading ? <h1>Cargando Tareas...</h1> :
+             taksArray === {} ? <h1>No hay tareas, disfruta tu día libre :D</h1> : taksArray}
         </div>
     )
 }

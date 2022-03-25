@@ -10,6 +10,8 @@ const urlBase = 'http://localhost:3000';
 export default function EditTask () {
     
     const { id } = useParams();
+    const [ taskNotFound, setTaskNotFound ] = useState(false);
+    const [ taskSaveSuccess, setTaskSaveSuccess] = useState(false);
     const [ updatedTask, setUpdatedTask ] = useState({
         title: "",
         expirationDate: new Date(),
@@ -29,7 +31,10 @@ export default function EditTask () {
                         })
                     }
                 })
-                .catch(error => console.log(error));
+                .catch(error => {
+                    console.log(error)
+                    setTaskNotFound(true);
+                });
         }
         getTask();
     }, [id]);
@@ -46,13 +51,24 @@ export default function EditTask () {
         console.log(updatedTask);
         //funcion que maneje errores
         axios.patch(`${urlBase}/tasks/${id}`,updatedTask)
+            .then(setTaskSaveSuccess(true))
+            .catch(error => console.log(error));
     }
 
     //caso en que la tarea no exista
-    // agregar mensaje de guardado
+    if (taskNotFound) {
+        return (
+            <div>
+                <h1>Tarea no encontrada</h1>
+                <Link to='/' className='btn btn-primary'>Volver a página principal</Link>
+            </div>
+        )
+    }
+
     return (
         <div>
             <h1>Editar tarea { id } </h1>
+            {taskSaveSuccess ? <h1>Tarea Guardada</h1>: null}
             <form className='search-form' onSubmit={submitHandler}>
                 <div className='form-control'>
                     <label htmlFor='name'>Descripción:</label>
@@ -83,7 +99,7 @@ export default function EditTask () {
                     />
                     <input type="submit" value="Submit" />
                 </div>
-            </form>
+            </form> 
             <Link to='/' className='btn btn-primary'>Volver a página principal</Link>
         </div>
     )

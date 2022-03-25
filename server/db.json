@@ -12,7 +12,7 @@
       "title": "tarea 7",
       "creationDate": "2021-06-08T20:20:40.000Z",
       "expirationDate": "2022-03-24T19:20:40.820Z",
-      "completed": false,
+      "completed": true,
       "isDeleted": false,
       "id": 7
     },
@@ -23,6 +23,30 @@
       "completed": false,
       "isDeleted": false,
       "id": 8
+    },
+    {
+      "title": "nueva tarea",
+      "creationDate": "2022-03-24T22:33:50.000Z",
+      "expirationDate": "2022-03-08T22:33:50.000Z",
+      "completed": false,
+      "isDeleted": false,
+      "id": 9
+    },
+    {
+      "title": "tarea vencida",
+      "creationDate": "2022-03-25T23:01:04.393Z",
+      "expirationDate": "2022-03-14T23:01:04.000Z",
+      "completed": false,
+      "isDeleted": false,
+      "id": 10
+    },
+    {
+      "title": "Tarea por completar",
+      "creationDate": "2022-03-25T23:07:24.475Z",
+      "expirationDate": "2022-03-27T23:07:24.000Z",
+      "completed": false,
+      "isDeleted": false,
+      "id": 11
     }
   ]
 }

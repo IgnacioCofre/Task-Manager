@@ -9,7 +9,6 @@ function orderTasksBy (orderBy) {
             } 
         //Order by task state
         } else if (orderBy === "currentState") {
-            console.log("order by current state");
             const today = new Date();
             const stateTask1 = today - new Date(Task1["expirationDate"]);
             const stateTask2 = today - new Date(Task2["expirationDate"]);
