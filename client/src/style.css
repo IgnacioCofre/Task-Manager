@@ -1,4 +1,7 @@
 
+*{
+    box-sizing: border-box;
+}
 
 body {
     font-family: "Inter", sans-serif;
@@ -43,18 +46,32 @@ body {
 }
 
 .btn-liberate {
-    background: #85adc7;
+    background-color: white;
     border-color: black;
+    border-radius: 4px;
     margin-left: 30px;
     margin-right: auto;
 }
 
 .btn-create-task {
     margin-right: auto;
-    background: #85adc7;
+    background-color: white;
+    border-radius: 4px;
     border-color: black;
     margin-left: 30px;
     margin-right: auto;
+}
+
+.btn-back-home {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 4px;
+    border-color: black;
+    width: 200px;
 }
 
 .order-selector {
@@ -68,6 +85,8 @@ body {
 
 .btn-edit {
     margin-right: auto;
+    background-color: white;
+    border-radius: 4px;
 }
 
 .task-container {
@@ -83,7 +102,7 @@ body {
     margin-top: 10px;
     padding: 10px;
     border-radius: 4px;
-    border: 2px solid rgb(215, 224, 226);
+    border: 2px solid rgb(19, 19, 19);
 }
 
 .delete-task-ckeckbox {
@@ -93,7 +112,6 @@ body {
 
 .task-title {
     width: 300px;
-    height: 50px;
     padding: 10px;
     margin-right: auto;
 }
@@ -111,4 +129,48 @@ body {
     padding: 10px;
     align-content: center;
     margin-right: auto;
+}
+
+.create-task-container {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.create-task-title {
+    display: flex;
+    justify-content: center;
+}
+
+.create-task-form {
+    display: flex;
+    justify-content: center;
+
+}
+
+.form-control{
+    display: grid;
+    grid-template-columns: [labels] auto [controls] 2fr;
+    grid-template-rows: auto auto auto auto ;
+    grid-gap: .8em;
+    background: #eee;
+    padding: 1.2em;
+}
+
+.create-task-btn {
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    border-color: black;
+}
+
+.task-toDo {
+    background-color: rgb(182, 228, 228);
+}
+
+.task-expire {
+    background-color: rgb(214, 157, 50);
+}
+
+.task-completed {
+    background-color: rgba(123, 138, 138, 0.541);
 }

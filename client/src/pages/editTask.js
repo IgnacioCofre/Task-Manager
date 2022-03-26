@@ -58,18 +58,25 @@ export default function EditTask () {
     //caso en que la tarea no exista
     if (taskNotFound) {
         return (
-            <div>
-                <h1>Tarea no encontrada</h1>
-                <Link to='/' className='btn btn-primary'>Volver a página principal</Link>
+            <div className="create-task-container">
+                <div className="create-task-title">
+                    <h1 >Tarea no encontrada</h1>
+                </div>
+                <button className='btn-back-home'>
+                    <Link to='/'>Volver a página principal</Link>
+                </button>
             </div>
         )
     }
 
     return (
-        <div>
-            <h1>Editar tarea { id } </h1>
-            {taskSaveSuccess ? <h1>Tarea Guardada</h1>: null}
-            <form className='search-form' onSubmit={submitHandler}>
+        <div className="create-task-container">
+            <div className="create-task-title">
+                <h1>Editar tarea: { id } </h1>
+            </div>
+            
+            
+            <form className='create-task-form' onSubmit={submitHandler}>
                 <div className='form-control'>
                     <label htmlFor='name'>Descripción:</label>
                     <input 
@@ -80,15 +87,9 @@ export default function EditTask () {
                         onChange={changeHandler}
                     >
                     </input>
-                    <label htmlFor='iscompleted'>Completada:</label>
-                    <input 
-                        type="checkbox" 
-                        name="completed"
-                        checked={updatedTask.completed} 
-                        onChange={changeHandler}
-                    >
-                    </input>
-                    <DatePicker selected={updatedTask.expirationDate} onChange={date => 
+                    
+                    <label htmlFor='expirationDate'>Fecha de expiración: </label>
+                    <DatePicker name="expirationDate" selected={updatedTask.expirationDate} onChange={date => 
                         setUpdatedTask(updatedTask => {
                             return {
                                 ...updatedTask,
@@ -97,10 +98,25 @@ export default function EditTask () {
                         })
                         } 
                     />
-                    <input type="submit" value="Submit" />
+                    <label htmlFor='iscompleted'>Completada:</label>
+                    <input 
+                        type="checkbox" 
+                        name="completed"
+                        checked={updatedTask.completed} 
+                        onChange={changeHandler}
+                    >
+                    </input>
+                    
+                    <input className="create-task-btn" type="submit" value="Guardar cambios" />
+
+                    <div className="create-task-title">
+                        {taskSaveSuccess ? <span>Tarea guardada</span>: null}
+                    </div>
                 </div>
             </form> 
-            <Link to='/' className='btn btn-primary'>Volver a página principal</Link>
+            <button className='btn-back-home'>
+                <Link to='/'>Volver a página principal</Link>
+            </button>
         </div>
     )
 }

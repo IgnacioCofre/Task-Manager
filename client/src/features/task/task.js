@@ -8,10 +8,26 @@ export default function Task (props) {
     
     const { id, completed, title, expirationDate, creationDate} = props.task;
     const indexState  = props.pos;
+
+    const taskStates = {
+        "completed": "Completada",
+        "toDo": "Por completar",
+        "expire": "Atrasada"
+    }
     
     const today = new Date();
-    const overdueTask = (new Date(expirationDate) < today) ? true : false; 
-    
+   
+    var taskState = "toDo";
+    if (completed) {
+        taskState = "completed"
+    } else {
+        if (new Date(expirationDate) < today) {
+            taskState = "expire";
+        } else {
+            taskState = "toDo";
+        }
+    }
+
     const checkState = useSelector(state => state.Tasks.value[indexState].isDeleted);
     //console.log(`${id} ${checkState}`);
     const dispatch = useDispatch();
@@ -22,7 +38,7 @@ export default function Task (props) {
     }
 
     return (
-        <div className="task">
+        <div className={`task task-${taskState}`}>
             <label className="delete-task-ckeckbox"> Eliminar:
                 <input type="checkbox" name="checkbox" checked={checkState} onChange={changeCheckState}/>
             </label>
@@ -37,10 +53,7 @@ export default function Task (props) {
             </div>
             
             <p className="task-state">
-            {
-                completed ? "Completada" : 
-                overdueTask ? "Atrasada" : "Por completar"
-            }
+            { taskStates[taskState] }
             </p>
             <button className="btn-edit">
                 <Link to={`/editTask/${id}`} className='btn btn-primary'>

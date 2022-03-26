@@ -34,10 +34,12 @@ export default function CreateTask () {
 
     // agregar mensaje de guardado
     return (
-        <div>
-            <h1>Crear nueava tarea</h1>
-            {taskSaveSuccess ? <h1>Tarea creada</h1> : null}
-            <form className='search-form' onSubmit={submitHandler}>
+        <div className="create-task-container">
+            <div className="create-task-title">
+                <h1 >Crear nueava tarea</h1>
+            </div>
+
+            <form className='create-task-form' onSubmit={submitHandler}>
                 <div className='form-control'>
                     <label htmlFor='name'>Descripción:</label>
                     <input 
@@ -48,14 +50,7 @@ export default function CreateTask () {
                         onChange={changeHandler}
                     >
                     </input>
-                    <label htmlFor='iscompleted'>Completada:</label>
-                    <input 
-                        type="checkbox" 
-                        name="completed"
-                        checked={newTask.completed} 
-                        onChange={changeHandler}
-                    >
-                    </input>
+
                     <label htmlFor='creationDate'>Fecha de creación:</label>
                     <DatePicker selected={newTask.creationDate} name='creationDate'
                     onChange={date => 
@@ -78,10 +73,26 @@ export default function CreateTask () {
                         })
                     } 
                     />
-                    <input type="submit" value="Submit" />
+                    <label htmlFor='iscompleted'>Completada:</label>
+                    <input 
+                        type="checkbox" 
+                        name="completed"
+                        checked={newTask.completed} 
+                        onChange={changeHandler}
+                    >
+                    </input>
+
+                    <input className="create-task-btn" type="submit" value="Guardar tarea" />
+                    <div className="create-task-title">
+                        {taskSaveSuccess ? <span className="create-task-warning">Tarea creada</span> : null}
+                    </div>
+                 
                 </div>
             </form>
-            <Link to='/' className='btn btn-primary'>Volver a página principal</Link>
+            <button className='btn-back-home'>
+                <Link to='/'>Volver a página principal</Link>
+            </button>
+            
         </div>
     )
 }
