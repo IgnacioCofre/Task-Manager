@@ -22,20 +22,32 @@ export default function Task (props) {
     }
 
     return (
-        <div>
-            <label>
+        <div className="task">
+            <label className="delete-task-ckeckbox"> Eliminar:
                 <input type="checkbox" name="checkbox" checked={checkState} onChange={changeCheckState}/>
             </label>
-            <p>{title}</p>
-            <p>Fecha de creación: {getDateFormat(new Date(creationDate))}</p>
-            <p>Fecha de vencimiento: {getDateFormat(new Date(expirationDate))}</p>
+            <span className="task-title">{title}</span>
+            <div className="date-creation">
+                <p>Fecha de creación:</p>
+                <p>{getDateFormat(new Date(creationDate))}</p>
+            </div>
+            <div className="date-expire">
+                <p>Fecha de vencimiento:</p>
+                <p>{getDateFormat(new Date(expirationDate))}</p>
+            </div>
+            
+            <p className="task-state">
             {
-                completed ? <p>Completada</p> : 
-                overdueTask ? <p>Atrasada</p> : <p>Por completar</p>
+                completed ? "Completada" : 
+                overdueTask ? "Atrasada" : "Por completar"
             }
-            <Link to={`/editTask/${id}`} className='btn btn-primary'>
-                Editar Tarea
-            </Link>
+            </p>
+            <button className="btn-edit">
+                <Link to={`/editTask/${id}`} className='btn btn-primary'>
+                    Editar Tarea
+                </Link>
+            </button>
+            
         </div>
     )
 }

@@ -30,10 +30,12 @@ export default function TasksList () {
 );
 
     return (
-        <div>
+        <div >
             <ControlBar/>
-            {loading ? <h1>Cargando Tareas...</h1> :
-             taksArray === {} ? <h1>No hay tareas, disfruta tu día libre :D</h1> : taksArray}
+            <div className="task-container">
+                {loading ? <h1>Cargando Tareas...</h1> :
+                taksArray === {} ? <h1>No hay tareas, disfruta tu día libre :D</h1> : taksArray}
+            </div>
         </div>
     )
 }

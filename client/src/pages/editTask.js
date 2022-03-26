@@ -22,7 +22,7 @@ export default function EditTask () {
         const getTask = async () => {
             axios.get(`${urlBase}/tasks/${id}`)
                 .then(res => {
-                    console.log(res.data);
+                    //console.log(res.data);
                     if(res.data !== {}) {
                         setUpdatedTask({
                             title: res.data.title,
@@ -48,7 +48,7 @@ export default function EditTask () {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(updatedTask);
+        //console.log(updatedTask);
         //funcion que maneje errores
         axios.patch(`${urlBase}/tasks/${id}`,updatedTask)
             .then(setTaskSaveSuccess(true))

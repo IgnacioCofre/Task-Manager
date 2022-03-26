@@ -25,11 +25,7 @@ export default function ControlBar () {
     const handleChange = (event) => {
         const { value } = event.target;
         setOrderTasks(value);
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        updateOrderTaskBy(orderTasks);
+        updateOrderTaskBy(value);
     }
 
     const updateIsDeleted = async () => {
@@ -58,19 +54,20 @@ export default function ControlBar () {
     }
 
     return (
-        <div>
-            <button onClick={updateIsDeleted}>Liberar tareas seleccionadas</button>
-            <Link to='createTask/' className='btn btn-primary'>+ Crear nueva tarea</Link>
-            <form onSubmit={handleSubmit}>
-                <label>Ordenar tareas por:
-                    <select value={orderTasks} onChange={handleChange} >
-                        <option value="creationDate">Fecha creación</option>
-                        <option value="expirationDate">Fecha vencimiento</option>
-                        <option value="currentState">Estado de tarea</option>
-                    </select>
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+        <div className="bar-control">
+            <button onClick={updateIsDeleted} className="btn-liberate">Liberar tareas seleccionadas</button>
+            <button className="btn-create-task">
+                <Link to='createTask/'>+ Crear nueva tarea</Link>
+            </button>
+            <div className="order-selector">
+                <label className="order-selector-label">Ordenar tareas por:</label>
+                <select value={orderTasks} onChange={handleChange} >
+                    <option value="creationDate">Fecha creación</option>
+                    <option value="expirationDate">Fecha vencimiento</option>
+                    <option value="currentState">Estado de tarea</option>
+                </select>
+            </div>
+            
         </div>
         
     )
