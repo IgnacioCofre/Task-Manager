@@ -31,7 +31,5 @@ Task-Manager implementado utilizando React, Redux Toolkit y json-server.
 
           npm start
 
-6. En el navegador debería abrirse una pestaña mostrando el frontend. De no ser así, diríjase a la siguiente página en su navegador.
-
-          [http://localhost:4000/](http://localhost:4000/)
+6. En el navegador debería abrirse una pestaña mostrando el frontend. De no ser así, diríjase a la siguiente página en su navegador: [http://localhost:4000/](http://localhost:4000/)
 
