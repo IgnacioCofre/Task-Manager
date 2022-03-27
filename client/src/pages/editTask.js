@@ -51,7 +51,9 @@ export default function EditTask () {
         //console.log(updatedTask);
         //funcion que maneje errores
         axios.patch(`${urlBase}/tasks/${id}`,updatedTask)
-            .then(setTaskSaveSuccess(true))
+            .then(() => {
+                setTaskSaveSuccess(true)
+            })
             .catch(error => console.log(error));
     }
 
@@ -110,7 +112,7 @@ export default function EditTask () {
                     <input className="create-task-btn" type="submit" value="Guardar cambios" />
 
                     <div className="create-task-title">
-                        {taskSaveSuccess ? <span>Tarea guardada</span>: null}
+                        {taskSaveSuccess ? <span className="warning-message">Tarea guardada</span>: null}
                     </div>
                 </div>
             </form> 

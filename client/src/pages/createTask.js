@@ -84,7 +84,7 @@ export default function CreateTask () {
 
                     <input className="create-task-btn" type="submit" value="Guardar tarea" />
                     <div className="create-task-title">
-                        {taskSaveSuccess ? <span className="create-task-warning">Tarea creada</span> : null}
+                        {taskSaveSuccess ? <span className="warning-message">Tarea creada</span> : null}
                     </div>
                  
                 </div>

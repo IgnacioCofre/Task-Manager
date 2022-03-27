@@ -51,6 +51,7 @@ body {
     border-radius: 4px;
     margin-left: 30px;
     margin-right: auto;
+    padding: 5px;
 }
 
 .btn-create-task {
@@ -60,6 +61,7 @@ body {
     border-color: black;
     margin-left: 30px;
     margin-right: auto;
+    padding: 5px;
 }
 
 .btn-back-home {
@@ -72,6 +74,7 @@ body {
     border-radius: 4px;
     border-color: black;
     width: 200px;
+    padding: 5px;
 }
 
 .order-selector {
@@ -87,6 +90,7 @@ body {
     margin-right: auto;
     background-color: white;
     border-radius: 4px;
+    padding: 3px;
 }
 
 .task-container {
@@ -161,6 +165,7 @@ body {
     background-color: white;
     border-radius: 4px;
     border-color: black;
+    padding: 5px;
 }
 
 .task-toDo {
@@ -173,4 +178,8 @@ body {
 
 .task-completed {
     background-color: rgba(123, 138, 138, 0.541);
+}
+
+.warning-message {
+    margin : auto;
 }
