@@ -1,15 +1,29 @@
 # Task-Manager
 Task-Manager implementado utilizando React, Redux Toolkit y json-server.
 
+### Prerequisitos
+          
+          git
+          node.js
+          json-server
+          
 ### Instrucciones
 
-1. En el terminal diríjase a la carpeta /Task-Managet/server.
-2. Escriba el siguiente comando para correr el servidor en el puerto 3000.
+1. Primero clone este repositorio en alguna carpeta en su computador.
 
+          git clone https://github.com/IgnacioCofre/Task-Manager.git
+
+3. En la terminal diríjase a la carpeta /Task-Manager/server.
+4. Para instalar json-server escriba en la terminal.
+          
+          npm install -g json-server
+
+5. Escriba el siguiente comando para correr el servidor en el puerto 3000.
+          
           json-server .\db.json
 
-3. Para el correr el cliente, en terminal dirijace a la carpeta /Task-Managet/client.
-4. Para instalar los paquetes y librerías necesarias ingrese el siguiente comando:
+4. Para el correr el cliente, en una nueva terminal diríjase a la carpeta /Task-Managet/client.
+5. Para instalar los paquetes y librerías necesarias ingrese el siguiente comando:
 
           npm install
           
@@ -21,5 +35,3 @@ Task-Manager implementado utilizando React, Redux Toolkit y json-server.
 
           [http://localhost:4000/](http://localhost:4000/)
 
-
-        
